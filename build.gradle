@@ -1,9 +1,15 @@
+//file:noinspection GroovyUnusedAssignment
+plugins {
+    id "application"
+}
+
 repositories {
     mavenCentral()
 }
 
-task hello(type: Exec) {
-    description "Say hello"
-    commandLine "echo"
-    args = ["brave", "world"]
+dependencies {
 }
+
+version "0.0.1"
+
+mainClassName = "org.demo.Hello"
