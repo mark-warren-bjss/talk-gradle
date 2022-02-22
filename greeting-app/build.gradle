@@ -1,0 +1,10 @@
+//file:noinspection GroovyUnusedAssignment
+plugins {
+    id "application"
+}
+
+dependencies {
+    implementation project(":greeting-service")
+}
+
+mainClassName = "org.greeting.Hello"
