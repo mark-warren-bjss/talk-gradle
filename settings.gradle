@@ -2,4 +2,5 @@ rootProject.name = "greetings"
 
 include ":greeting-app"
 include ":greeting-model"
+include ":greeting-repository"
 include ":greeting-service"
