@@ -1,0 +1,9 @@
+repositories {
+    mavenCentral()
+}
+
+task hello(type: Exec) {
+    description "Say hello"
+    commandLine "echo"
+    args = ["brave", "world"]
+}
