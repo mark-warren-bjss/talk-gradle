@@ -4,9 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation project(":greeting-model")
-
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
 }
