@@ -3,7 +3,10 @@ package org.greeting.service;
 import lombok.extern.slf4j.Slf4j;
 import org.greeting.model.Language;
 
+import javax.enterprise.context.ApplicationScoped;
+
 @Slf4j
+@ApplicationScoped
 public class GreetingService {
     public void sayHello(Language language) {
         log.info("Requested language: {}", language);

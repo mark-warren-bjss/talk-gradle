@@ -6,6 +6,10 @@ plugins {
 dependencies {
     implementation project(":greeting-model")
     implementation project(":greeting-service")
+
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    implementation "org.jboss.weld.se:weld-se:${weldSeVersion}"
 }
 
 mainClassName = "org.greeting.Hello"
