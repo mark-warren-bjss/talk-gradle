@@ -1,0 +1,17 @@
+buildscript {
+    dependencies {
+        classpath("org.postgresql:postgresql:${postgresClientVersion}")
+    }
+}
+
+plugins {
+    id "java"
+    id "org.flywaydb.flyway" version "${flywayPluginVersion}"
+}
+
+flyway {
+    url = "jdbc:postgresql://127.0.0.1:5437/APP"
+    schemas = ["STUFF"]
+    user = "dev"
+    password = "dev123"
+}
