@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "com.avast.gradle.docker-compose" version "${dockerComposePluginVersion}"
 }
 
 allprojects {
@@ -17,4 +18,12 @@ subprojects {
             languageVersion = JavaLanguageVersion.of(11)
         }
     }
+}
+
+dockerCompose {
+    projectName = "greeting"
+    environment["DB_NAME"] = "APP"
+    environment["DB_USERNAME"] = "dev"
+    environment["DB_PASSWORD"] = "dev123"
+    environment["DB_PORT"] = "5437"
 }
