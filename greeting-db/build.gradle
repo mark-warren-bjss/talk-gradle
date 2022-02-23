@@ -9,6 +9,8 @@ plugins {
     id "org.flywaydb.flyway" version "${flywayPluginVersion}"
 }
 
+description = "DB schema definition and migrations"
+
 flyway {
     url = "jdbc:postgresql://127.0.0.1:5437/APP"
     schemas = ["STUFF"]

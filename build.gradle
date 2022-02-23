@@ -3,6 +3,8 @@ plugins {
     id "com.avast.gradle.docker-compose" version "${dockerComposePluginVersion}"
 }
 
+description = "Top level build + docker-compose"
+
 allprojects {
     repositories {
         mavenCentral()

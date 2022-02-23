@@ -3,6 +3,8 @@ plugins {
     id "java"
 }
 
+description = "Repository layer"
+
 dependencies {
     implementation project(":greeting-jooq")
     implementation project(":greeting-model")

@@ -3,6 +3,8 @@ plugins {
     id "java"
 }
 
+description = "Service layer"
+
 dependencies {
     implementation project(":greeting-model")
     implementation project(":greeting-repository")

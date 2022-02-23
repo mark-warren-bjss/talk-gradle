@@ -3,6 +3,8 @@ plugins {
     id "java"
 }
 
+description = "Config for SQL DataSource and other injected objects."
+
 dependencies {
     implementation "org.jooq:jooq:${jooqRuntimeVersion}"
     implementation "org.apache.commons:commons-dbcp2:${commonsDbcpVersion}"

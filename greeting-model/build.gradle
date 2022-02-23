@@ -3,6 +3,8 @@ plugins {
     id "java"
 }
 
+description = "Domain model for the greeting application"
+
 dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"

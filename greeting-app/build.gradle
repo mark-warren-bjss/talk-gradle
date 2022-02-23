@@ -3,6 +3,8 @@ plugins {
     id "application"
 }
 
+description = "Greeting application"
+
 dependencies {
     implementation project(":greeting-config")
     implementation project(":greeting-model")

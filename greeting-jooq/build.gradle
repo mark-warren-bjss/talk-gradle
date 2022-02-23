@@ -6,6 +6,8 @@ plugins {
     id "nu.studer.jooq" version "${jooqPluginVersion}"
 }
 
+description = "JOOQ code generation"
+
 dependencies {
     implementation "org.jooq:jooq:${jooqRuntimeVersion}"
     jooqGenerator "org.postgresql:postgresql:${postgresClientVersion}"
