@@ -1,0 +1,70 @@
+//file:noinspection GroovyAssignabilityCheck,GradlePackageUpdate,GradlePackageUpdate
+//file:noinspection GrUnresolvedAccess
+
+plugins {
+    id "java"
+    id "nu.studer.jooq" version "${jooqPluginVersion}"
+}
+
+dependencies {
+    implementation "org.jooq:jooq:${jooqRuntimeVersion}"
+    jooqGenerator "org.postgresql:postgresql:${postgresClientVersion}"
+}
+
+def dbName = "APP"
+def dbPassword = "dev123"
+def dbPort = "5437"
+def dbSchema = "STUFF"
+def dbUsername = "dev"
+def dbJdbcUrl = "jdbc:postgresql://localhost:${dbPort}/${dbName}"
+
+jooq {
+    version = jooqRuntimeVersion
+    configurations {
+        db {
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = "org.postgresql.Driver"
+                    url = dbJdbcUrl
+                    user = dbUsername
+                    password = dbPassword
+                }
+                generator {
+                    database {
+                        inputSchema = dbSchema
+                    }
+                    generate {
+                        javaTimeTypes = true
+                    }
+                    target {
+                        directory = "build/generated/jooq/java"
+                        packageName = "org.greeting.jooq"
+                    }
+                }
+            }
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "build/generated/jooq/java"
+        }
+    }
+}
+
+def cleanDbJooq = tasks.register("cleanDbJooq", Delete.class) {
+    description = "Cleans the Jooq generated sources."
+    group = "jooq"
+    delete = "${buildDir}/generated/jooq"
+}
+
+tasks.named("compileJava") {
+    mustRunAfter("generateDbJooq")
+}
+
+tasks.named("generateDbJooq") {
+    mustRunAfter(cleanDbJooq)
+}
