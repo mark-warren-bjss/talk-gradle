@@ -3,24 +3,24 @@ package org.greeting.repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.greeting.model.Language;
+import org.jooq.DSLContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.Optional;
+
+import static org.greeting.jooq.Tables.GREETING_TEXT;
 
 @Slf4j
 @ApplicationScoped
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class GreetingRepository {
 
+    private final DSLContext dsl;
+
     public Optional<String> readGreetingText(Language language) {
-        switch (language) {
-            case EN:
-                return Optional.of("Hello, pleased to meet you.");
-            case ES:
-                return Optional.of("Hola, encantado a conoceros.");
-            default:
-                return Optional.empty();
-        }
+        return dsl.selectFrom(GREETING_TEXT)
+                .where(GREETING_TEXT.LANGUAGE.eq(language.name()))
+                .fetchOptional(GREETING_TEXT.CONTENT);
     }
 }

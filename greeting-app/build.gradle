@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    implementation project(":greeting-config")
     implementation project(":greeting-model")
     implementation project(":greeting-service")
 

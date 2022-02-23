@@ -4,13 +4,16 @@ plugins {
 }
 
 dependencies {
-    implementation project(":greeting-jooq")
-    implementation project(":greeting-model")
-
     implementation "org.jooq:jooq:${jooqRuntimeVersion}"
+    implementation "org.apache.commons:commons-dbcp2:${commonsDbcpVersion}"
+    runtimeOnly "org.postgresql:postgresql:${postgresClientVersion}"
 
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.jboss.weld:weld-api:${weldApiVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+}
+
+test {
+    useJUnitPlatform()
 }
